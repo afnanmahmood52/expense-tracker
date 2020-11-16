@@ -1,0 +1,25 @@
+.expenseHeading{
+    text-align: center;
+    font-weight: bolder;
+}
+.balance_section{
+    text-align: center;
+}
+
+.detail_expense{
+    display: flex;
+    justify-content: center;
+}
+
+.income_section, .expense_section{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 35px;
+}
+
+.divider{
+    border: 1px solid rgb(150, 189, 189);
+}
