@@ -15,12 +15,12 @@ export default function TranscItem(props) {
 
         <h6 className={classes.trans_value}>{props.value}</h6>
         <div className={classes.editButton}>
-            <IconButton size="small">
-                <EditIcon size="small"/>
+            <IconButton>
+                <EditIcon />
             </IconButton>
 
-            <IconButton size="small">
-                <DeleteForeverIcon size="small"/>
+            <IconButton >
+                <DeleteForeverIcon/>
             </IconButton>
         </div>
       </div>
