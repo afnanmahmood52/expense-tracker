@@ -3,6 +3,7 @@ import 'fontsource-roboto';
 import { Divider, Grid } from '@material-ui/core';
 import classes from './App.module.css'
 import Transaction from './component/Transaction';
+import FormDialog from './component/FormDialog';
 
 
 function App() {
@@ -32,7 +33,7 @@ function App() {
                 <Typography variant='h6' style={{fontWeight:'500', color:'red'}}>30000 PKR</Typography>
               </div>
             </div>
-
+            <FormDialog/>
             <Transaction/>        
           
       
