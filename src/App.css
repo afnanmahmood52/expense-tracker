@@ -23,3 +23,11 @@
 .divider{
     border: 1px solid rgb(150, 189, 189);
 }
+
+.add-transaction{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0; 
+}

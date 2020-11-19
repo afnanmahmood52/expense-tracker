@@ -1,44 +1,42 @@
-import Typography from '@material-ui/core/Typography';
+import "./App.css"
 import 'fontsource-roboto';
-import { Divider, Grid } from '@material-ui/core';
-import classes from './App.module.css'
-import Transaction from './component/Transaction';
-import FormDialog from './component/FormDialog';
+import { Grid } from '@material-ui/core';
+import TransactionList from './component/TransactionList';
+import AddTransaction from './component/AddTransaction';
+import React from 'react'
 
+import {GlobalProvider} from './context/GlobalState'
+import expense_items  from './component/expenses'
+import BalanceSection from './component/BalanceSection';
 
 function App() {
+  //const [Income, setIncome] = React.useState(0)
+  //const [Expense, setExpense] = React.useState(0)
+  //const [Balance, setBalance] = React.useState(Income-Expense)
 
+  //let E = 0
+  //let I = 0
+
+  //expense_items.map((item)=>{
+  //  ((item.TranscType === 'Expense') ? Expense += (item.amount) : Income += Math.abs(item.amount))
+  //})
+
+  //setIncome(I)
+  //setIncome(E)
+
+  //console.log(Income)
+  //console.log(Expense)
 
   return (
+    <GlobalProvider>
     <Grid container xs ={12} justify='center' direction='column' alignItems='center' style={{marginTop:'50px'}} >
       <Grid item xs={10} md={6} >
-
-            <Typography variant='h3' style={{textAlign:'center', fontWeight:'600', color:'green', marginBottom:'20px'}}>Expense Tracker</Typography>
-
-            <div className={classes.balance_section}>
-              <Typography variant='h5' >Your Balance</Typography>
-              <Typography variant='h5' style={{fontWeight:'600', color:'green'}}>2600.00 PKR</Typography>
-            </div>
-
-            <div className={classes.detail_expense}>
-              
-              <div className={classes.income_section} >
-                <Typography variant='h6' style={{fontWeight:'600', color:'blue'}} >INCOME</Typography>
-                <Typography variant='h6' style={{fontWeight:'500', color:'blue'}} >30000 PKR</Typography>
-              </div>
-            
-              <hr className={classes.divider}/>
-              <div className={classes.expense_section}>
-                <Typography variant='h6' style={{fontWeight:'600', color:'red'}} >EXPENSE</Typography>
-                <Typography variant='h6' style={{fontWeight:'500', color:'red'}}>30000 PKR</Typography>
-              </div>
-            </div>
-            <FormDialog/>
-            <Transaction/>        
-          
-      
+            <BalanceSection />
+            <AddTransaction/>
+            <TransactionList/>
       </Grid>
     </Grid>    
+    </GlobalProvider>
   );
 }
 

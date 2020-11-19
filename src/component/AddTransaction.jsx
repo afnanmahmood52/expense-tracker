@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -17,7 +17,9 @@ import FormLabel from '@material-ui/core/FormLabel';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 
-export default function FormDialog() {
+
+
+export default function AddTransaction() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -45,7 +47,7 @@ export default function FormDialog() {
 
   const handleRadioChange = (event) => {
     setTranscType(event.target.value);
-    //console.log(TranscType)
+    setTranscValue( event.target.value === 'Expense' ? TranscValue: (TranscValue - 2*TranscValue))
   };
 
   const getFormValues = (event) =>{
@@ -56,7 +58,7 @@ export default function FormDialog() {
   };
 
   return (
-    <div>
+    <div className="add-transaction">
       <Button variant="contained" color="primary" startIcon={<AddCircleOutlineIcon />} onClick={handleClickOpen}>
         ADD NEW TRANSACTION
       </Button>
@@ -125,7 +127,7 @@ export default function FormDialog() {
                 <Button onClick={getFormValues} variant="contained" style={{backgroundColor:'#558000', color:'white'}} startIcon={<AddCircleIcon />}>
                     ADD
                 </Button>
-            </DialogActions>`
+            </DialogActions>
         </div>
         
       </Dialog>
