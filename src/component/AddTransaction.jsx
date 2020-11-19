@@ -117,7 +117,6 @@ export default function AddTransaction() {
             variant='outlined'
             type="text"
             fullWidth
-            required="true"
             onChange={handleTranscNameChange}
           />
 
@@ -129,7 +128,6 @@ export default function AddTransaction() {
             type="number"
             variant='outlined'
             fullWidth
-            required="true"
             InputProps={{
                 inputProps: { 
                     min: 0,
