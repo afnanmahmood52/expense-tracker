@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -17,9 +17,13 @@ import FormLabel from '@material-ui/core/FormLabel';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 
+import {GlobalContext} from '../context/GlobalState'
+
 
 
 export default function AddTransaction() {
+  const {addTransaction} = useContext(GlobalContext);
+
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -30,7 +34,7 @@ export default function AddTransaction() {
     setOpen(false);
   };
 
-  const [TranscType, setTranscType] = React.useState('Expense');
+  const [TranscType, setTranscType] = React.useState('Income');
 
   const [TranscName, setTranscName] = React.useState('');
   const [TranscValue, setTranscValue] = React.useState('');
@@ -47,13 +51,24 @@ export default function AddTransaction() {
 
   const handleRadioChange = (event) => {
     setTranscType(event.target.value);
-    setTranscValue( event.target.value === 'Expense' ? TranscValue: (TranscValue - 2*TranscValue))
+    //setTranscValue( event.target.value === 'Expense' ? TranscValue: (TranscValue - 2*TranscValue))
   };
 
   const getFormValues = (event) =>{
     console.log(TranscType)
     console.log(TranscName)
     console.log(TranscValue)
+
+    event.preventDefault()
+
+    const newTransaction = {
+      id: Math.floor(Math.random()*100000),
+      detail: TranscName,
+      amount: (TranscType === 'Income' ? (+TranscValue) :((+TranscValue) - 2*(+TranscValue)))
+    }
+
+    addTransaction(newTransaction)
+
     handleClose()
   };
 
