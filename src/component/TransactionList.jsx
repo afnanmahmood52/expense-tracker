@@ -12,7 +12,7 @@ export default function TransactionList() {
     <div className={classes.transaction_box}>
       <Typography variant='h6' style={{fontWeight:'600', color:'green', marginBottom:'10px'}} >History of Expenses</Typography>
       {
-        transactions.map(transaction=> (<TranscItem key ={transaction.id} id={transaction.id} title={transaction.detail} value={`${transaction.amount} PKR`}/>))
+        transactions.map(transaction=> (<TranscItem key ={transaction.id} id={transaction.id} title={transaction.detail} value={`${transaction.amount} PKR`} amount={transaction.amount}/>))
       }
     </div>
   )

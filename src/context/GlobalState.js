@@ -2,28 +2,8 @@ import React, {createContext, useReducer} from 'react';
 import AppReducer from "./AppReducer"
 
 // Initial State
-const initialState = {
+let initialState = {
     transactions:[
-        {
-            id: 1,
-            detail: "Bought Flower",
-            amount: -500
-        },
-        {
-            id: 2,
-            detail: "Salary Income",
-            amount: 25000
-        },
-        {
-            id: 3,
-            detail: "Salary Income",
-            amount: 25000
-        },
-        {
-            id: 4,
-            detail: "Bought Grocery",
-            amount: -5000
-        }
     ]
 }
 
@@ -53,11 +33,13 @@ export const GlobalProvider = ({children})=>{
         )
     }
 
+   
+
     return (
         <GlobalContext.Provider value={{
             transactions: state.transactions,
             deleteTransaction,
-            addTransaction
+            addTransaction,
         }}>
             {children}
         </GlobalContext.Provider>

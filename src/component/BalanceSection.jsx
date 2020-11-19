@@ -2,8 +2,11 @@ import React,{useContext} from "react";
 import Typography from '@material-ui/core/Typography';
 import {GlobalContext} from '../context/GlobalState'
 
+
 export default function BalanceSection() {
   const {transactions} = useContext(GlobalContext)
+
+  console.log(transactions)
 
   const amounts = transactions.map(transaction => transaction.amount)
   const BalanceTotal = amounts.reduce((acc,item)=>(acc+=item),0).toFixed(2)
@@ -36,7 +39,7 @@ export default function BalanceSection() {
       >
         Expense Tracker
       </Typography>
-
+      
       <div className="balance_section">
         <Typography variant="h5">Your Balance</Typography>
         <Typography

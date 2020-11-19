@@ -20,7 +20,6 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import {GlobalContext} from '../context/GlobalState'
 
 
-
 export default function AddTransaction() {
   const {addTransaction} = useContext(GlobalContext);
 
@@ -55,11 +54,33 @@ export default function AddTransaction() {
   };
 
   const getFormValues = (event) =>{
+
+    event.preventDefault()
+
+    // Check if the transaction amount or the transaction value field
+    // is empty We should return in that case
+    
+    if(!TranscValue || !TranscName){
+      if(!TranscValue && !TranscName){
+        alert("Transaction Name and Amount can't be empty!!!")
+        return
+      }
+
+      if(!TranscValue){
+        alert("Transaction Amount can't be empty!!!")
+        return
+      }
+      
+      if(!TranscName){
+        alert("Transaction Name can't be empty!!!")
+        return
+      }
+      
+    }
+
     console.log(TranscType)
     console.log(TranscName)
     console.log(TranscValue)
-
-    event.preventDefault()
 
     const newTransaction = {
       id: Math.floor(Math.random()*100000),
@@ -69,6 +90,10 @@ export default function AddTransaction() {
 
     addTransaction(newTransaction)
 
+    //Empty the states after submission of add transaction
+    setTranscName('');
+    setTranscValue('');
+
     handleClose()
   };
 
@@ -77,6 +102,7 @@ export default function AddTransaction() {
       <Button variant="contained" color="primary" startIcon={<AddCircleOutlineIcon />} onClick={handleClickOpen}>
         ADD NEW TRANSACTION
       </Button>
+      
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title" style={{backgroundColor:'#4747d1', color:'white', textAlign:'center'}}>ADD NEW TRANSACTION</DialogTitle>
         <DialogContent>
@@ -91,6 +117,7 @@ export default function AddTransaction() {
             variant='outlined'
             type="text"
             fullWidth
+            required="true"
             onChange={handleTranscNameChange}
           />
 
@@ -102,6 +129,7 @@ export default function AddTransaction() {
             type="number"
             variant='outlined'
             fullWidth
+            required="true"
             InputProps={{
                 inputProps: { 
                     min: 0,
@@ -146,6 +174,7 @@ export default function AddTransaction() {
         </div>
         
       </Dialog>
+     
     </div>
   );
 }
